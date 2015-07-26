@@ -2022,4 +2022,8 @@ describe('test roman numbers till 2000', function(){
   it('MCMXCIX should return 1999', function(){ assert.equal(deromanize('MCMXCIX'), 1999);});
   it('MM should return 2000', function(){ assert.equal(deromanize('MM'), 2000);});
 
+  it('MMM should return 3000', function(){ assert.equal(deromanize('MMM'), 3000);});
+  it('mmm should return 3000', function(){ assert.equal(deromanize('MMM'), 3000);});
+  it('mcmlxxxviii should return 1988', function(){ assert.equal(deromanize('mcmlxxxviii'), 1988);});
+
 });
