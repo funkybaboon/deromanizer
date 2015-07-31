@@ -1,48 +1,38 @@
-module.exports = function (roman) {
-	var num = 0;
+exports.nfn = function(roman) {
 	roman = roman.toUpperCase();
+
+	var num = 0;
 	var lookup = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
-	var i = 0;
+	var index = 0;
 
-	roman = roman.split("");
-
-	var sum = roman.reduce(function(previousValue, currentValue, i, array) {
-		
-
-		if ( lookup[roman[i]] < lookup[roman[i+1]] )
-			num -= lookup[roman[i]];
+	while (index < roman.length) {
+		if ( lookup[roman[index]] < lookup[roman[index+1]] )
+			num -= lookup[roman[index]];
 		else
-			num += lookup[roman[i]];
-
-		
-
-		return num;
-	}, 0);
-	
-	return sum;
-/*
-	var sum = roman.reduce(
-  		function(index){ 
-			if ( lookup[roman[i]] < lookup[roman[i+1]] )
-				num -= lookup[roman[i]];
-			else
-				num += lookup[roman[i]];
-
-  			return num;
-  		}
-  	, 0);
-
-	return sum;
-	*/
-
-
-/*
-	while (i < roman.length) {
-		if ( lookup[roman[i]] < lookup[roman[i+1]] )
-			num -= lookup[roman[i]];
-		else
-			num += lookup[roman[i]];
-		i++;
+			num += lookup[roman[index]];
+		index++;
 	}
-	return num;*/
+	return num;
 };
+
+exports.fn = function(roman) {
+	roman = roman.toUpperCase().split("");
+
+	var lookup = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+
+	add = function(x,y){
+		return x + y;
+	};
+	sub = function(x,y){
+		return x - y;
+	};
+
+	return roman.reduce(function(sum, currentValue, index) {
+		if ( lookup[roman[index]] < lookup[roman[index+1]] )
+			return sub(sum, lookup[roman[index]]);
+		else
+			return add(sum, lookup[roman[index]]);
+	}, 0);
+
+};
+
