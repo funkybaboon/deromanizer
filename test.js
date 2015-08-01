@@ -14,11 +14,12 @@ function romanize(num) {
   return roman;
 }
 
+/*
 for (var i = 1; i <= 2000; i++) {
   //console.log("case \'"+romanize(i)+"\': num = \"" + i + "\"; break;");
   //console.log("it('" + romanize(i) + " should return "+i+"', function(){ assert.equal(deromanize('" + romanize(i) + "'), " + i + ");});");
 }
-
+*/
 
 describe('test roman numbers till 2000', function(){
   it('I should return 1', function(){ assert.equal(deromanize('I'), 1);});
